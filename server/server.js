@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const api = require('./routes/api');
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config()
+require('dotenv').config();
 
 // to run locally
 
@@ -12,6 +12,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api', api);
+
+app.listen(PORT, () => {
+  console.log('Server running on localhost:' + PORT);
+});
 
 // to run in prod env
 
@@ -24,10 +28,3 @@ app.use('/api', api);
 // app.get('/*', (req, res) => {
 //     res.sendFile(path.join(__dirname, 'public/index.html'));
 // });
-
-
-app.listen(PORT, () => {
-    console.log('Server running on localhost:' + PORT);
-});
-
-
